@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IPokemonList } from '../../model/IPokemonList';
+import { PokemonService } from '../../services/pokemon-service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,7 +11,7 @@ import { IPokemonList } from '../../model/IPokemonList';
 export class PokemonList implements OnInit {
   pokemonList!: IPokemonList[];
 
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
 
   /* 
   *  Método de la interfaz OnInit
@@ -19,35 +20,6 @@ export class PokemonList implements OnInit {
   */
   ngOnInit(): void {
     // Para invocar a servicios
-    this.pokemonList = [
-      {
-        name: 'bulbasaur',
-        url: 'https://pokeapi.co/api/v2/pokemon/1/',
-      },
-      {
-        name: 'ivysaur',
-        url: 'https://pokeapi.co/api/v2/pokemon/2/',
-      },
-      {
-        name: 'venusaur',
-        url: 'https://pokeapi.co/api/v2/pokemon/3/',
-      },
-      {
-        name: 'charmander',
-        url: 'https://pokeapi.co/api/v2/pokemon/4/',
-      },
-      {
-        name: 'charmeleon',
-        url: 'https://pokeapi.co/api/v2/pokemon/5/',
-      },
-      {
-        name: 'charizard',
-        url: 'https://pokeapi.co/api/v2/pokemon/6/',
-      },
-      {
-        name: 'squirtle',
-        url: 'https://pokeapi.co/api/v2/pokemon/7/',
-      },
-    ];
+    this.pokemonList = this.pokemonService.getPokemonList();
   }
 }
