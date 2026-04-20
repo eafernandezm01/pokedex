@@ -20,6 +20,15 @@ export class PokemonList implements OnInit {
   */
   ngOnInit(): void {
     // Para invocar a servicios
+    /* SÍNCRONO */
     this.pokemonList = this.pokemonService.getPokemonList();
+
+    /*ASÍCRONO*/
+    this.pokemonService.getAsyncPokemonList().subscribe((data) => {
+       console.log (data);
+       console.log (data.results);
+       this.pokemonList = data.results;
+    })
+
   }
 }
