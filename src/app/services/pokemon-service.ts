@@ -10,6 +10,11 @@ export class PokemonService {
   
   constructor(private http: HttpClient){}
 
+  getPokemonDetail (nombre:string): Observable<any>{
+                        //https://pokeapi.co/api/v2/pokemon/ditto
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
+    // return this.http.get('https://pokeapi.co/api/v2/pokemon/' + nombre);
+  }
 
 
   getAsyncPokemonList():Observable<any>{
